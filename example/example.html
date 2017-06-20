@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>uiutils.js</title>
+</head>
+<body>
+  <h1>uiutils.js</h1>
+
+  <form>
+    <p>
+      <select class="select1"></select>
+      <select class="select2"></select>
+      <select class="select3"></select>
+    </p>
+    <p>
+      <input type="text" id="value1" class="selectedVal"/>
+      <input type="text" id="value2" class="selectedVal"/>
+      <input type="text" id="value3" class="selectedVal"/>
+    </p>
+    <p><label for="cb1"><input type="checkbox" id="cb1"/>checkbox1</label></p>
+    <p>
+      <label for="rb1_1">
+        <input type="radio" id="rb1_1" name="rb1" value="a" />radio1-1</label>
+      <label for="rb1_2">
+        <input type="radio" id="rb1_2" name="rb1" value="b" />radio1-2</label>
+    </p>
+  </form>
+
+  <p id="selectedPath"></p>
+
+  <script src="../js/uiutils.js"></script>
+  <script>
+window.addEventListener('DOMContentLoaded', function(e) {
+    uiutilsjs.createDrillDownSelect(
+        [
+            ["name1",     1, null, null],
+            ["name1-1",   1,   11, null],
+            ["name1-1-1", 1,   11,  111],
+            ["name2",     2, null, null],
+            ["name2-1",   2,   21, null],
+            ["name2-1-1", 2,   21,  211],
+            ["name2-1-2", 2,   21,  212],
+            ["name2-2",   2,   22, null],
+            ["name2-2-1", 2,   22,  221],
+            ["name2-2-2", 2,   22,  222],
+            ["name3",     3, null, null],
+            ["name3-1",   3,   31, null],
+            ["name3-1-1", 3,   31,  311],
+            ["name3-1-2", 3,   31,  312],
+            ["name3-1-3", 3,   31,  313],
+            ["name3-2",   3,   32, null],
+            ["name3-2-1", 3,   32,  321],
+            ["name3-2-2", 3,   32,  322],
+            ["name3-2-3", 3,   32,  323],
+            ["name3-3",   3,   33, null],
+            ["name3-3-1", 3,   33,  331],
+            ["name3-3-2", 3,   33,  332],
+            ["name3-3-3", 3,   33,  333]
+        ],
+        [".select1", ".select2", ".select3"],
+        ["#value1", "#value2", "#value3"]
+    );
+
+    uiutilsjs.createWatcher('.selectedVal', function(prevStat, curStat){
+        var selectedPath = document.getElementById('selectedPath');
+        while (selectedPath.lastChild) {
+            selectedPath.removeChild(selectedPath.lastChild);
+        }
+        var idx, len = curStat.length, val = '';
+        for (idx = 0; idx < len; ++ idx) {
+            val += '/' + curStat[idx].value;
+        }
+	console.log(val);
+        selectedPath.appendChild(
+                document.createTextNode(val));
+    })
+}, false);
+  </script>
+</body>
+</html>
