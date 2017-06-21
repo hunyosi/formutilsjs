@@ -5,7 +5,7 @@
 
 'use strict';
 
-var uiutilsjs = (function(wnd, doc){
+var formutilsjs = (function(wnd, doc){
 
 
 function createDrillDownSelect(srcData, selects, hiddens) {

@@ -2,10 +2,10 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>uiutils.js</title>
+  <title>formutils.js</title>
 </head>
 <body>
-  <h1>uiutils.js</h1>
+  <h1>formutils.js</h1>
 
   <form>
     <p>
@@ -29,10 +29,10 @@
 
   <p id="selectedPath"></p>
 
-  <script src="../js/uiutils.js"></script>
+  <script src="../js/formutils.js"></script>
   <script>
 window.addEventListener('DOMContentLoaded', function(e) {
-    uiutilsjs.createDrillDownSelect(
+    formutilsjs.createDrillDownSelect(
         [
             ["name1",     1, null, null],
             ["name1-1",   1,   11, null],
@@ -62,7 +62,7 @@ window.addEventListener('DOMContentLoaded', function(e) {
         ["#value1", "#value2", "#value3"]
     );
 
-    uiutilsjs.createWatcher('.selectedVal', function(prevStat, curStat){
+    formutilsjs.createWatcher('.selectedVal', function(prevStat, curStat){
         var selectedPath = document.getElementById('selectedPath');
         while (selectedPath.lastChild) {
             selectedPath.removeChild(selectedPath.lastChild);
